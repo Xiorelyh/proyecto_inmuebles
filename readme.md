@@ -26,6 +26,7 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 <summary>Hito 2</summary>
 
+![App Screenshot](Hito2/super_usuario.png)
 ![App Screenshot](Hito2/Migraciones.png)
 ![App Screenshot](Hito2/Django_Administration.png)
 ![App Screenshot](Hito2/pgAdmin_bd_y_tablas.png)
