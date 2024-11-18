@@ -1,4 +1,4 @@
-# HITO 1 Proyecto Inmuebles 🏡
+# Proyecto Inmuebles 🏡
 
 Aplicación web desarrollada en **Django** para la gestión de inmuebles y usuarios.
 
@@ -24,13 +24,13 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 ## Screenshots
 <details>
 
-<summary>Hito 1</summary>
+<summary>Hito 2</summary>
 
-![App Screenshot](Hito1/Migraciones.png)
-![App Screenshot](Hito1/Django_Administration.png)
-![App Screenshot](Hito1/pgAdmin_bd_y_tablas.png)
-![App Screenshot](Hito1/inmuebles.png)
-![App Screenshot](Hito1/usuario.png)
+![App Screenshot](Hito2/Migraciones.png)
+![App Screenshot](Hito2/Django_Administration.png)
+![App Screenshot](Hito2/pgAdmin_bd_y_tablas.png)
+![App Screenshot](Hito2/inmuebles.png)
+![App Screenshot](Hito2/usuario.png)
 
 </details>
 
