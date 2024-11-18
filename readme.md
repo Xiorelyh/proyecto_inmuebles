@@ -11,16 +11,6 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 - PostgreSQL 
 - pip para gestionar dependencias
 
-## Instalación 🚀
-
-Sigue estos pasos para configurar el proyecto localmente:
-
-### 1. Clonar el repositorio
-
-```bash
-git clone https://github.com/xiorelyh/proyecto_inmuebles.git
-cd proyecto_inmuebles
-
 ## Modelos principales 📦
 - Usuario: Basado en AbstractUser, incluye atributos como rut, direccion, telefono, y tipo_usuario.
 - Inmueble: Detalles como nombre, m2_construido, m2_terreno, precio, tipo_inmueble y más.
