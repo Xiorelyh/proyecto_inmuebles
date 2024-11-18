@@ -50,10 +50,6 @@ class Region(models.Model):
     nombre = models.CharField(max_length=100,blank=False, null=False)
     numero = models.IntegerField(default=0, blank=False, null=False)
 
-class Provincia(models.Model):
-    nombre = models.CharField(max_length=100,blank=False, null=False)
-    region_id =models.ForeignKey(Region, on_delete=models.PROTECT)
-
 class Comuna(models.Model):
     nombre=models.CharField(max_length=100,blank=False, null=False)
     provincia_id = models.ForeignKey(Provincia,default=0, on_delete=models.PROTECT)
