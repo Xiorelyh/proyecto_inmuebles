@@ -52,6 +52,6 @@ class Region(models.Model):
 
 class Comuna(models.Model):
     nombre=models.CharField(max_length=100,blank=False, null=False)
-    provincia_id = models.ForeignKey(Provincia,default=0, on_delete=models.PROTECT)
+    region = models.ForeignKey(Region, default=0, on_delete=models.PROTECT)
 
 
