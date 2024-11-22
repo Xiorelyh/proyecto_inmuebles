@@ -1,0 +1,15 @@
+[
+    {
+        "model": "gestion_inmuebles.usuario",
+        "pk": 1,
+        "fields": {
+            "username": "arrendatario1",
+            "password": "pbkdf2_sha256$320000$hashed_password",
+            "rut": "12345678-9",
+            "direccion": "Calle Falsa 123",
+            "telefono": "+56912345678",
+            "tipo_usuario": "arrendatario"
+        }
+    }
+]
+

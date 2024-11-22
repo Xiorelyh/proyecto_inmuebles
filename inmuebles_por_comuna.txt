@@ -1,0 +1,40 @@
+Comuna: Antofagasta
+Nombre: Casa en Antofagasta
+Descripción: Casa de 2 pisos con patio y jardines amplios.
+Nombre: Departamento en Antofagasta
+Descripción: Departamento moderno de 2 habitaciones en el centro de la ciudad.
+
+Comuna: Arica
+Nombre: Casa en Arica
+Descripción: Hermosa casa de 3 pisos con jardín amplio.
+Nombre: Departamento en Arica
+Descripción: Departamento con vista al mar y 2 habitaciones.
+
+Comuna: Copiapó
+Nombre: Casa en Copiapó
+Descripción: Casa con piscina y vista a la montaña.
+Nombre: Departamento en Copiapó
+Descripción: Departamento céntrico, ideal para estudiantes.
+
+Comuna: Iquique
+Nombre: Casa en Iquique
+Descripción: Casa de 4 habitaciones en zona residencial.
+Nombre: Departamento en Iquique
+Descripción: Amplio departamento con 3 habitaciones y vista al mar.
+
+Comuna: La Serena
+Nombre: Casa en La Serena
+Descripción: Casa en barrio tranquilo, con jardín y acceso a parques.
+Nombre: Departamento en La Serena
+Descripción: Cómodo departamento con vista al mar y 2 habitaciones.
+
+Comuna: Valparaíso
+Nombre: Casa en Valparaíso
+Descripción: Casa de 3 pisos con vistas al mar y espacios amplios.
+Nombre: Departamento en Valparaíso
+Descripción: Departamento con 2 habitaciones en pleno centro de Valparaíso.
+
+Comuna: Viña del Mar
+Nombre: Casa en Viña del Mar
+Descripción: Casa con jardín, piscina y 4 habitaciones.
+

@@ -1,0 +1,6 @@
+[
+    {"model": "gestion_inmuebles.tipo_inmueble", "pk": 1, "fields": {"nombre": "Casa"}},
+    {"model": "gestion_inmuebles.tipo_inmueble", "pk": 2, "fields": {"nombre": "Departamento"}},
+    {"model": "gestion_inmuebles.tipo_inmueble", "pk": 3, "fields": {"nombre": "Oficina"}},
+    {"model": "gestion_inmuebles.tipo_inmueble", "pk": 4, "fields": {"nombre": "Terreno"}}
+]
