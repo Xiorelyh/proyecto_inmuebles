@@ -1,0 +1,57 @@
+{% load static %}
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg" style="background-color: white;">
+  <div class="container text-center" style="font-family: sans-serif, cursive;">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-black fw-bold" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black fw-bold" href="/acerca">Acerca</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black fw-bold" href="/contacto">Contacto</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link text-black fw-bold" href="/bienvenido">Bienvenidos</a>
+          </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link text-black fw-bold" href="/registro">Registro</a>
+        </li>
+      </ul>
+
+      <!-- Enlace de inicio/cierre de sesión alineado a la derecha -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link nav-link text-black fw-bold" style="display: inline; padding: 0;">
+                  Cerrar sesión
+              </button>
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-black fw-bold" href="{% url 'login' %}">Iniciar sesión</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

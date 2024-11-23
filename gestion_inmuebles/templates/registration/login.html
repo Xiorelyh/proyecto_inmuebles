@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6"> 
+            <h2 class="text-center pb-3">Iniciar sesión</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="mb-3"> 
+                    <label for="id_username" class="form-label">Usuario:</label>
+                    <input type="text" name="username" id="id_username" class="form-control" required>
+                </div>
+                <div class="mb-3"> 
+                    <label for="id_password" class="form-label">Contraseña:</label>
+                    <input type="password" name="password" id="id_password" class="form-control" required>
+                </div>
+                <button type="submit" style="background-color: coral; color: white;" class="btn btn-primary fw-bold">Iniciar sesión</button>
+            </form>
+            <p class="text-center mt-3">¿No tienes una cuenta? <a href="{% url 'registro' %}">Registrarse</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'gestion_inmuebles.Usuario'  
+LOGIN_REDIRECT_URL = 'inicio' 
+LOGOUT_REDIRECT_URL = 'login'
 
 # Application definition
 
@@ -55,7 +58,7 @@ ROOT_URLCONF = 'proyecto_inmuebles.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
