@@ -1,0 +1,67 @@
+Listado de Inmuebles para Arriendo por Regiones
+==================================================
+
+Región: Región de Arica y Parinacota
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Tarapacá
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Antofagasta
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Atacama
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Coquimbo
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Valparaíso
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región del Libertador General Bernardo O'Higgins
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región del Maule
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región del Biobío
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de La Araucanía
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Los Ríos
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Los Lagos
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Aysén del General Carlos Ibáñez del Campo
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Magallanes y de la Antártica Chilena
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región Metropolitana de Santiago
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
+Región: Región de Ñuble
+--------------------------------------------------
+No hay inmuebles disponibles en esta región.
+
