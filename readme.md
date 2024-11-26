@@ -1,3 +1,5 @@
+![Pantalla_Inicio](Autenticacion_de_Usuarios/index.png)
+
 # Proyecto Inmuebles 🏡
 
 Aplicación web desarrollada en **Django** para la gestión de inmuebles y usuarios.
@@ -34,6 +36,19 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 ![App Screenshot](Hito2/usuario.png)
 
 </details>
+
+<details>
+
+<summary>Autenticación de Usuarios</summary>
+
+![App Screenshot](Autenticacion_de_Usuarios/index.png)
+![App Screenshot](Autenticacion_de_Usuarios/registro.png)
+![App Screenshot](Autenticacion_de_Usuarios/inicio_sesion.png)
+![App Screenshot](Autenticacion_de_Usuarios/opcion_con_sesion_iniciada.png)
+![App Screenshot](Autenticacion_de_Usuarios/usuarios_prueba.png)
+
+</details>
+
 <details>
 
 <summary>Hito 3</summary>

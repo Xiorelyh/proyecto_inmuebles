@@ -24,28 +24,23 @@ def inicio(request):
     return render(request, 'index.html', {'form': form, 'resultados': resultados})
 
 
+
 def registro(request):
     if request.method == 'POST':
         form = RegistroUsuarioForm(request.POST)
         if form.is_valid():
-            # Validación de contraseñas
-            password1 = form.cleaned_data['password1']
-            password2 = form.cleaned_data['password2']
-            
-            if password1 != password2:
-                messages.error(request, 'Las contraseñas no coinciden.')
-            else:
-                usuario = form.save(commit=False)
-                usuario.set_password(password1)  # Establece la contraseña en el usuario
-                usuario.save()
+            form.save()  # Guarda directamente el usuario, incluido el hashing de la contraseña
+            messages.success(request, 'Usuario registrado con éxito.')
 
-                messages.success(request, 'Usuario registrado con éxito.')
-
-                # Autenticar al usuario después del registro
-                usuario_autenticado = authenticate(username=usuario.username, password=password1)
-                if usuario_autenticado is not None:
-                    login(request, usuario_autenticado)
-                    return redirect('inicio')  # Redirige al inicio después del login
+            # Autenticar al usuario después del registro
+            usuario = authenticate(username=form.cleaned_data['username'], 
+                                   password=form.cleaned_data['password1'])
+            if usuario is not None:
+                login(request, usuario)
+                return redirect('inicio')  # Redirige a la página principal
+        else:
+            # Agrega un mensaje de error si el formulario no es válido
+            messages.error(request, 'Error al registrar el usuario. Revisa los datos ingresados.')
     else:
         form = RegistroUsuarioForm()
     
