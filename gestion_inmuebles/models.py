@@ -25,8 +25,8 @@ class Usuario(AbstractUser):
         related_name='gestion_inmuebles_user_permissions_set',  # Cambia el nombre del accesor a los permisos
         blank=True,
     )
- 
-    
+
+
 class Region(models.Model):
     nombre = models.CharField(max_length=100,blank=False, null=False)
     numero = models.IntegerField(default=0, blank=False, null=False)
@@ -35,8 +35,13 @@ class Comuna(models.Model):
     nombre=models.CharField(max_length=100,blank=False, null=False)
     region = models.ForeignKey(Region, default=0, on_delete=models.PROTECT)
 
+
 class Tipo_inmueble(models.Model):
-    nombre=models.CharField(max_length=100,blank=False, null=False)
+    nombre = models.CharField(max_length=100, blank=False, null=False)
+
+    def __str__(self):
+        return self.nombre
+  
 
 class Inmueble(models.Model):
     nombre = models.CharField(max_length=200)
@@ -53,6 +58,7 @@ class Inmueble(models.Model):
 
     def __str__(self):
         return self.nombre
+ 
 
 
 

@@ -1,63 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bienvenido a OnlyFlans</title>
-  
-  <script
-      src="https://kit.fontawesome.com/8657e78088.js"
-      crossorigin="anonymous">
-    </script>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tu descripción aquí">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>{% block title %}Bienvenido a Nuva Living{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <script src="https://kit.fontawesome.com/8657e78088.js" crossorigin="anonymous"></script>
+</head>
 
-  </script>
-    <!--Boostrap-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-   
+<body>
+    <!-- Header -->
+    {% block header %} 
+        {% include 'header.html' %} 
+    {% endblock %}
+
+    <!-- Navbar -->
+    {% block navbar %} 
+        {% include 'navbar.html' %} 
+    {% endblock %}
+
+    <!-- Contenido Principal -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
     <!-- Mostrar mensajes de Django -->
     {% if messages %}
     <div class="container mt-3">
         {% for message in messages %}
-      <div class="alert alert-success" role="alert">
-        {{ message }}
-      </div>
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
         {% endfor %}
     </div>
     {% endif %}
-
-    <!--Header-->
-    {% block 'header' %} 
-      {% include 'header.html' %} 
+    
+    <!-- Footer -->
+    {% block footer %} 
+        {% include 'footer.html' %} 
     {% endblock %}
 
-    <!--Navbar-->
-    {% block 'navbar' %} 
-      {% include 'navbar.html' %} 
-    {% endblock %}
-
-    <!--Contenido Principal-->
-    <main>
-      {% block content %}{% endblock %}
-    </main>
-
-    <!--Footer-->
-    {% block 'footer' %} 
-      {% include 'footer.html' %} 
-    {% endblock %}
-
-     <!-- Bootstrap JavaScript -->
-      
+    <!-- Bootstrap JavaScript -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-  </body>
+    
+    <!-- JS -->
+    {% block extra_js %}{% endblock %}
+</body>
 </html>
+
