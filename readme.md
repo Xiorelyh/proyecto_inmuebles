@@ -1,4 +1,4 @@
-![Pantalla_Inicio](Autenticacion_de_Usuarios/index.png)
+![Pantalla_Inicio](Autenticacion_de_Usuario/index.png)
 
 # Proyecto Inmuebles 🏡
 
@@ -41,11 +41,11 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 <summary>Autenticación de Usuarios</summary>
 
-![App Screenshot](Autenticacion_de_Usuarios/index.png)
-![App Screenshot](Autenticacion_de_Usuarios/registro.png)
-![App Screenshot](Autenticacion_de_Usuarios/inicio_sesion.png)
-![App Screenshot](Autenticacion_de_Usuarios/opcion_con_sesion_iniciada.png)
-![App Screenshot](Autenticacion_de_Usuarios/usuarios_prueba.png)
+![App Screenshot](Autenticacion_de_Usuario/index.png)
+![App Screenshot](Autenticacion_de_Usuario/registro.png)
+![App Screenshot](Autenticacion_de_Usuario/inicio_sesion.png)
+![App Screenshot](Autenticacion_de_Usuario/opcion_con_sesion_iniciada.png)
+![App Screenshot](Autenticacion_de_Usuario/usuarios_prueba.png)
 
 </details>
 
