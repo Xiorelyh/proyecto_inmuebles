@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Bienvenida -->
+        <div class="col-md-8 text-center">
+            <h1>¡Hola, {{ user.username }}!</h1>
+            <p>Estamos encantados de tenerte aquí. A continuación, puedes revisar tu información personal y modificarla si es necesario.</p>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <!-- Acordeón -->
@@ -8,40 +18,35 @@
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                            Editar Mi Perfil
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile">
+                            Mis Datos
                         </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                    <div id="collapseProfile" class="accordion-collapse collapse show">
                         <div class="accordion-body">
-                            <h1>Mi Perfil</h1>
-                            <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" name="nombre" value="{{ user.nombre }}" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Correo Electrónico</label>
-                                    <input type="email" name="email" value="{{ user.email }}" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="telefono">Teléfono</label>
-                                    <input type="text" name="telefono" value="{{ user.telefono }}" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="foto_perfil">Foto de Perfil</label>
-                                    <input type="file" name="foto_perfil" class="form-control">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
-                            </form>
-                            <h2>Editar Perfil</h2>
-                            <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
-                            </form>
+                            <h2>Tus datos de registro:</h2>
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+                                <li class="list-group-item"><strong>Rut:</strong> {{ user.rut }}</li>
+                                <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                                <li class="list-group-item"><strong>Dirección:</strong> {{ user.direccion }}</li>
+                                <li class="list-group-item"><strong>Teléfono:</strong> {{ user.telefono }}</li>
+                                <li class="list-group-item"><strong>Fecha de registro:</strong> {{ user.date_joined|date:"d M Y H:i" }}</li>
+                            </ul>
+                        </div>
+                    </div>
 
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit" aria-expanded="false" aria-controls="collapseEdit">
+                                Editar Perfil
+                            </button>
+                        </h2>
+                        <div id="collapseEdit" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <p>Puedes editar tu información personal aquí:</p>
+                                <a href="{% url 'editar_perfil' %}" class="btn btn-warning">Editar mi perfil</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,10 +89,20 @@
                     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                         <div class="accordion-body">
                             <h2>Recaudos para Arrendar</h2>
+                            <h4>Si eres trabajador dependiente:</h4>
                             <ul>
-                                <li>Contrato de trabajo</li>
-                                <li>Informe de antecedentes</li>
-                                <li>Identificación oficial</li>
+                                <li>Copia de su carnet.</li>
+                                <li>Copia del contrato de trabajo.</li>
+                                <li>Copia de las 3 últimas liquidaciones de sueldo.</li>
+                                <li>Cotizaciones de AFP.</li>
+                                <li>Certificado Dicom Destacame Arriendo. <a href="https://certificadodestacame.cl" target="_blank">Puedes obtenerlo aquí</a>.</li>
+                            </ul>
+                            <h4>Si eres trabajador independiente:</h4>
+                            <ul>
+                                <li>Copia de su carnet.</li>
+                                <li>Carpeta tributaria para solicitar crédito.</li>
+                                <li>Resumen anual de boletas (en caso de honorarios).</li>
+                                <li>Certificado Dicom Destacame Arriendo. <a href="https://certificadodestacame.cl" target="_blank">Puedes obtenerlo aquí</a>.</li>
                             </ul>
                         </div>
                     </div>

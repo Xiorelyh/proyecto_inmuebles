@@ -8,10 +8,9 @@ from django.contrib.auth.decorators import login_required
 
 
 def inicio(request):
-    form = BuscadorForm(request.GET)  # Usamos request.GET para obtener los datos del formulario
-    resultados = Inmueble.objects.all()  # Mostrar todos los inmuebles inicialmente
-
-    # Filtrar según los valores seleccionados en el formulario
+    form = BuscadorForm(request.GET)  
+    resultados = Inmueble.objects.all()  
+    
     if form.is_valid():
         tipo_inmueble = form.cleaned_data.get('tipo_inmueble')
         comuna = form.cleaned_data.get('comuna')
@@ -30,9 +29,8 @@ def registro(request):
     if request.method == 'POST':
         form = RegistroUsuarioForm(request.POST)
         if form.is_valid():
-            form.save()  # Guarda directamente el usuario, incluido el hashing de la contraseña
+            form.save()  
             messages.success(request, 'Usuario registrado con éxito.')
-
             # Autenticar al usuario después del registro
             usuario = authenticate(username=form.cleaned_data['username'], 
                                    password=form.cleaned_data['password1'])
@@ -40,7 +38,6 @@ def registro(request):
                 login(request, usuario)
                 return redirect('inicio')  # Redirige a la página principal
         else:
-            # Agrega un mensaje de error si el formulario no es válido
             messages.error(request, 'Error al registrar el usuario. Revisa los datos ingresados.')
     else:
         form = RegistroUsuarioForm()
@@ -98,20 +95,18 @@ def agendar_visita(request):
 
 @login_required
 def editar_perfil(request):
-    user = request.user  # Usuario actualmente autenticado
+    user = request.user
+
     if request.method == 'POST':
-        user.nombre = request.POST.get('nombre', user.nombre)
+        user.username = request.POST.get('nombre', user.username)
         user.email = request.POST.get('email', user.email)
         user.telefono = request.POST.get('telefono', user.telefono)
         user.direccion = request.POST.get('direccion', user.direccion)
+        user.rut = request.POST.get('rut', user.rut)  
 
-        # Manejo de foto de perfil
-        if 'foto_perfil' in request.FILES:
-            user.foto_perfil = request.FILES['foto_perfil']
+        user.save()  # Guarda los cambios
 
-        user.save()
-        messages.success(request, 'Perfil actualizado exitosamente.')
-        return redirect('editar_perfil')
+        messages.success(request, "Tu perfil ha sido actualizado con éxito.")
 
     return render(request, 'editar_perfil.html', {'user': user})
 

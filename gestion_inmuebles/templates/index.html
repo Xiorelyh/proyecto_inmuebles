@@ -3,26 +3,30 @@
 {% block content %}
 <body>
 
- <!-- Contenido del buscador -->
+<!-- Contenido del buscador -->
  <div class="position-relative" style="height: 600px; background-image: url('{% static "assets/img/nuva_1.png" %}'); background-size: cover; background-position: center;">
-    <div class="position-relative d-flex justify-content-end align-items-center h-100 ms-auto me-5">
-        <div class="p-4 rounded shadow text-center" style="z-index: 2; max-width: 700px; background-color: rgba(255, 255, 255, 0.8);">
-            <h1 class="h4 text-dark">Encuentra tu próximo hogar. <br> Arrienda con Nuva Living!</h1>
-            
+    <h2 class="position-absolute top-0 text-white fw-bold p-4 text-center w-100" style="z-index: 2; max-width: 100%; white-space: normal;">
+        Encuentra tu próximo hogar!
+    </h2>
+    <div class="position-absolute bottom-0 w-100 d-flex justify-content-center mb-4">
+        <div class="p-2 rounded shadow text-center" style="background-color: rgba(255, 255, 255, 0.8); width: 100%; max-width: 800px;">
             <!-- Formulario del buscador -->
             <form method="get" action="{% url 'inicio' %}" class="mt-3">
-                {% csrf_token %}
                 
-                <!-- Campo de tipo de propiedad -->
-                <div class="form-group mb-3">
-                    <label for="id_tipo_inmueble" class="form-label text-muted">¿Qué tipo de propiedad buscas?</label>
-                    {{ form.tipo_inmueble|add_class:"form-select w-100 rounded" }}
-                </div>
-
-                <!-- Campo de comuna -->
-                <div class="form-group mb-3">
-                    <label for="id_comuna" class="form-label text-muted">¿Dónde quieres vivir?</label>
-                    {{ form.comuna|add_class:"form-select w-100 rounded" }}
+                {% csrf_token %}
+                                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <!-- Campo de tipo de propiedad -->
+                        <label for="id_tipo_inmueble" class="form-label text-muted fw-bold">¿Qué tipo de propiedad buscas?</label>
+                        {{ form.tipo_inmueble|add_class:"form-select w-100 rounded" }}
+                    </div>
+                
+                    <div class="col-md-6">
+                        <!-- Campo de comuna -->
+                        <label for="id_comuna" class="form-label text-muted fw-bold">¿Dónde quieres vivir?</label>
+                        {{ form.comuna|add_class:"form-select w-100 rounded" }}
+                    </div>
                 </div>
 
                 <!-- Botón de búsqueda -->
@@ -32,7 +36,7 @@
             </form>
         </div>
     </div>
-</div>
+  </div>
 
 <!-- Resultados de la búsqueda -->
 {% if resultados %}
