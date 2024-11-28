@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import Usuario
 from .models import Inmueble
+from .models import Usuario, Visita
 
 
 class RegistroUsuarioForm(UserCreationForm):
@@ -24,3 +25,18 @@ class BuscadorForm(forms.Form):
         required=False,
         label="Comuna"
     )
+
+class PerfilForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['nombre', 'email', 'telefono', 'foto_perfil']
+
+class VisitaForm(forms.ModelForm):
+    class Meta:
+        model = Visita
+        fields = ['inmueble', 'fecha_visita']
+
+class EditarPerfilForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['nombre', 'email', 'telefono', 'direccion', 'foto_perfil']  

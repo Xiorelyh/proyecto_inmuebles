@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <!-- Acordeón -->
+        <div class="col-md-6">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            Editar Mi Perfil
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <h1>Mi Perfil</h1>
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" name="nombre" value="{{ user.nombre }}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Correo Electrónico</label>
+                                    <input type="email" name="email" value="{{ user.email }}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono</label>
+                                    <input type="text" name="telefono" value="{{ user.telefono }}" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="foto_perfil">Foto de Perfil</label>
+                                    <input type="file" name="foto_perfil" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                            </form>
+                            <h2>Editar Perfil</h2>
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                            Agendar Visita
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <h2>Agendar Visita</h2>
+                            <form method="POST" action="{% url 'agendar_visita' %}">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="propiedad">Selecciona la propiedad</label>
+                                    <select name="propiedad" class="form-control">
+                                        {% for propiedad in propiedades %}
+                                            <option value="{{ propiedad.id }}">{{ propiedad.nombre }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha_visita">Fecha de Visita</label>
+                                    <input type="date" name="fecha_visita" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-success">Agendar Visita</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            Recaudos para Arrendar
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <h2>Recaudos para Arrendar</h2>
+                            <ul>
+                                <li>Contrato de trabajo</li>
+                                <li>Informe de antecedentes</li>
+                                <li>Identificación oficial</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segundo contenedor: Propiedades favoritas -->
+        <div class="col-md-6">
+            <h2>Mis Propiedades Favoritas</h2>
+            <div class="row">
+                {% for propiedad in propiedades_favoritas %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{{ propiedad.imagen_url }}" class="card-img-top" alt="{{ propiedad.nombre }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ propiedad.nombre }}</h5>
+                                <p class="card-text">{{ propiedad.descripcion }}</p>
+                                <a href="{% url 'ver_detalles' propiedad.id %}" class="btn btn-info">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+    
+

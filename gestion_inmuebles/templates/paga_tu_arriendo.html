@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Paga tu arriendo{% endblock %}
+
+{% block content %}
+
+<!-- Encabezado -->
+<div class="position-relative" style="height: 600px; background-image: url('{% static "assets/img/nuva_2.png" %}'); background-size: cover; background-position: center; background-color: rgba(255, 255, 255, 0.4); background-blend-mode: overlay;">
+    <div class="text-center mb-4 py-5" style="width: 100%; padding: 0 20px;">
+        <h1 class="fw-bold" style="font-size: 3rem; line-height: 1.2;">
+            Paga tu arriendo <span class="text-primary">en línea</span>
+        </h1>
+        <p class="text-muted" style="font-size: 1.2rem;">Realiza tu pago de forma fácil y segura.</p>
+    </div>
+
+    <!-- Tarjeta con el formulario -->
+    <div class="container d-flex justify-content-center">
+        <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
+            <form id="payment-form" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="document-number" class="form-label">Número de documento del titular de la propiedad</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="document-number" 
+                        placeholder="Ingresa el número de documento" 
+                        required>
+                    <div class="invalid-feedback">Número de documento requerido</div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    
+{% endblock %}
+
+

@@ -26,4 +26,8 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('perfil/', views.perfil_usuario, name='perfil_usuario'),
+    path('pagar-arriendo/', views.paga_tu_arriendo, name='paga_tu_arriendo'),
+    path('agendar-visita/', views.agendar_visita, name='agendar_visita'),
+    path('editar_perfil/', views.editar_perfil, name='editar_perfil'),
 ] 

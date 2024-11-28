@@ -1,0 +1,41 @@
+.navbar {
+    font-family: Arial, sans-serif;
+    width: 250px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.menu-item {
+    margin-bottom: 10px;  /* Espaciado entre elementos */
+}
+
+.menu-button {
+    background-color: #f8f9fa;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.menu-button:hover {
+    background-color: #e2e6ea;
+}
+
+.submenu {
+    display: none;
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-top: 5px;
+    border-radius: 4px;
+}
+
+.submenu p {
+    margin: 0;
+}
+
+.row {
+    margin-top: 20px;
+}
