@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 style=" text-align: center;">¡Hola, {{ user.username }}!</h1>
+    <h3 class="text-center">Modifica los detalles de la propiedad seleccionada.</h3>
+    
+    <!-- Mostrar mensajes de éxito -->
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %} 
+
+    <form method="POST" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        
+        <div class="form-group mb-3">
+            <label for="nombre"><strong>Titulo</strong></label>
+            <input type="text" name="nombre" value="{{ form.nombre.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="descripcion"><strong>Descripcion</strong> </label>
+            <input type="text" name="descripcion" value="{{ form.descripcion.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="m2_construidos"><strong>M2 Construidos</strong></label>
+            <input type="number" name="m2_construidos" value="{{ form.m2_construidos.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="m2_totales"><strong>M2 Totales</strong></label>
+            <input type="number" name="m2_totales" value="{{ form.m2_totales.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="estacionamientos"><strong>Estacionamiento</strong></label>
+            <input type="number" name="estacionamientos" value="{{ form.estacionamientos.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="habitaciones"><strong>Habitaciones</strong></label>
+            <input type="number" name="habitaciones" value="{{ form.habitaciones.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="banos"><strong>Baños</strong></label>
+            <input type="number" name="banos" value="{{ form.banos.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="direccion"><strong>Dirección</strong></label>
+            <input type="text" name="direccion" value="{{ form.direccion.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="comuna"><strong>Comuna</strong></label>
+            <input type="text" name="comuna" value="{{ form.comuna.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="tipo_inmueble"><strong>Tipo de Inmueble</strong></label>
+            <input type="text" name="tipo_inmueble" value="{{ form.tipo_inmueble.value }}" class="form-control">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Actualizar Propiedad</button>
+    </form>
+</div>
+
+
+    <!-- Enlace a la página de perfil del arrendatario -->
+    <div class="mt-4 text-center">
+        <a href="{% url 'perfil_usuario' %}" class="btn btn-secondary">Ir a Mi Perfil</a>
+
+{% endblock %}
+

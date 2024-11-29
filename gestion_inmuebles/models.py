@@ -17,6 +17,13 @@ class Inmueble(models.Model):
     comuna = models.CharField(max_length=100)
     tipo_inmueble = models.CharField(max_length=50)
     precio_mensual = models.DecimalField(max_digits=10, decimal_places=2)
+    arrendador = models.ForeignKey(
+        'Usuario', 
+        on_delete=models.CASCADE, 
+        related_name='propiedades', 
+        null=True, 
+        blank=True
+    )  # Relación con el usuario arrendador
 
     def __str__(self):
         return self.nombre
@@ -75,5 +82,11 @@ class Visita(models.Model):
     def __str__(self):
         return f"Visita a {self.inmueble.nombre} por {self.usuario.username} el {self.fecha_visita}"
 
+#Modelo Favoritos
+class Favorito(models.Model):
+    usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE)  # Usar 'Usuario' como string
+    inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE)
+    fecha_agregado = models.DateTimeField(auto_now_add=True)
 
-
+    def __str__(self):
+        return f"Favorito de {self.usuario} para {self.inmueble.nombre}"

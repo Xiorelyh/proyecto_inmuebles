@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from gestion_inmuebles import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -27,7 +29,13 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('perfil/', views.perfil_usuario, name='perfil_usuario'),
+    path('perfil/<int:inmueble_id>/', views.perfil_usuario, name='perfil_usuario_detalle'),
     path('pagar-arriendo/', views.paga_tu_arriendo, name='paga_tu_arriendo'),
     path('agendar-visita/', views.agendar_visita, name='agendar_visita'),
     path('editar_perfil/', views.editar_perfil, name='editar_perfil'),
+    path('agregar_favorito/<int:inmueble_id>/', views.agregar_favorito, name='agregar_favorito'),
+    path('propiedades/publicar/', views.publicar_propiedad, name='publicar_propiedad'),
+    path('propiedades/editar/<int:propiedad_id>/', views.editar_propiedad, name='editar_propiedad'),
 ] 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

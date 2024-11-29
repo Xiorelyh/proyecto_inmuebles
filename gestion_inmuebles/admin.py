@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Usuario, Tipo_inmueble, Inmueble, Region, Comuna
+from .models import Usuario, Tipo_inmueble, Inmueble, Region, Comuna, Favorito
 
 
 # Personalizar Usuario
@@ -34,3 +34,5 @@ class ComunaAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre', 'region')  # Mostrar ID, nombre y región en la tabla
     search_fields = ('nombre', 'region__nombre')  # Campo de búsqueda por nombre de la comuna o región
     list_filter = ('region',)  # Filtro por región
+
+admin.site.register(Favorito)

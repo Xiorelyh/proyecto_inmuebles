@@ -4,7 +4,13 @@ from django.contrib import messages
 from .forms import BuscadorForm
 from .models import Inmueble
 from .forms import RegistroUsuarioForm
+from .forms import PropiedadForm
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.urls import reverse 
+from .models import Inmueble, Favorito
 from django.contrib.auth.decorators import login_required
+from .models import Favorito
 
 
 def inicio(request):
@@ -47,13 +53,18 @@ def registro(request):
 
 @login_required
 def perfil_usuario(request):
-    if request.user.tipo_usuario == 'arrendador':  # Verifica el tipo de usuario
-        return render(request, 'perfil_arrendador.html')
+    if request.user.tipo_usuario == 'arrendador':
+        propiedades_publicadas = Inmueble.objects.filter(arrendador=request.user)
+        return render(request, 'perfil_arrendador.html', {'propiedades_publicadas': propiedades_publicadas})
+    
     elif request.user.tipo_usuario == 'arrendatario':
-        return render(request, 'perfil_arrendatario.html')
+        propiedades_favoritas = Favorito.objects.filter(usuario=request.user).select_related('inmueble')
+        return render(request, 'perfil_arrendatario.html', {'propiedades_favoritas': propiedades_favoritas})
+
     else:
         return render(request, 'error.html', {'mensaje': 'Tipo de usuario no reconocido'})
     
+
 
 #Paga_ Arriendo
 
@@ -92,7 +103,6 @@ def agendar_visita(request):
 
 
 #Editar Perfil
-
 @login_required
 def editar_perfil(request):
     user = request.user
@@ -110,3 +120,43 @@ def editar_perfil(request):
 
     return render(request, 'editar_perfil.html', {'user': user})
 
+#Inmuebles Favoritos
+@login_required
+def agregar_favorito(request, inmueble_id):
+    inmueble = get_object_or_404(Inmueble, id=inmueble_id) 
+    favorito, created = Favorito.objects.get_or_create(usuario=request.user, inmueble=inmueble)
+    
+    if created:
+        print(f"{inmueble.nombre} agregado a favoritos")
+    else:
+        print(f"{inmueble.nombre} ya estaba en favoritos")
+    
+    return HttpResponseRedirect(reverse('perfil_usuario'))
+
+
+#Publicar Propiedad
+@login_required
+def publicar_propiedad(request):
+    if request.method == 'POST':
+        form = PropiedadForm(request.POST)
+        if form.is_valid():
+            nueva_propiedad = form.save(commit=False)
+            nueva_propiedad.arrendador = request.user  
+            nueva_propiedad.save()
+            return redirect('perfil_usuario')
+    else:
+        form = PropiedadForm()
+    return render(request, 'publicar_propiedad.html', {'form': form})
+
+#Editar Propiedd
+@login_required
+def editar_propiedad(request, propiedad_id):
+    propiedad = Inmueble.objects.get(id=propiedad_id, arrendador=request.user)
+    if request.method == 'POST':
+        form = PropiedadForm(request.POST, instance=propiedad)
+        if form.is_valid():
+            form.save()
+            return redirect('perfil_usuario')
+    else:
+        form = PropiedadForm(instance=propiedad)
+    return render(request, 'editar_propiedad.html', {'form': form, 'propiedad': propiedad})

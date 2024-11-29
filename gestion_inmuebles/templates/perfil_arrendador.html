@@ -1,17 +1,103 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block title %}Perfil Arrendador{% endblock %}
 
 {% block content %}
+
 <div class="container mt-5">
-    <h1 class="text-center">Perfil de Arrendador</h1>
-    <p class="text-muted text-center">Bienvenido, {{ user.username }}</p>
-    
-    <div class="card mt-4">
-        <div class="card-body">
-            <h4 class="card-title">Tus propiedades</h4>
-            <p class="card-text">Aquí puedes gestionar las propiedades que ofreces para arrendar.</p>
-            
+    <div class="row justify-content-center">
+        <!-- Bienvenida -->
+        <div class="col-md-12 text-center">
+            <h1>¡Hola, {{ user.username }}!</h1>
+            <p>Bienvenido a tu panel de arrendador. Aquí puedes gestionar tus propiedades y publicar nuevas.</p>
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <!-- Acordeón -->
+        <div class="col-md-12 mt-5">
+            <div class="accordion" id="accordionArrendador">
+                <!-- Sección de Datos Personales -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile">
+                            Mis Datos
+                        </button>
+                    </h2>
+                    <div id="collapseProfile" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            <h2>Tus datos de registro:</h2>
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+                                <li class="list-group-item"><strong>Rut:</strong> {{ user.rut }}</li>
+                                <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                                <li class="list-group-item"><strong>Dirección:</strong> {{ user.direccion }}</li>
+                                <li class="list-group-item"><strong>Teléfono:</strong> {{ user.telefono }}</li>
+                                <li class="list-group-item"><strong>Fecha de registro:</strong> {{ user.date_joined|date:"d M Y H:i" }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Editar Datos Personales -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEdit" aria-expanded="false" aria-controls="collapseEdit">
+                            Editar Perfil
+                        </button>
+                    </h2>
+                    <div id="collapseEdit" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <p>Puedes editar tu información personal aquí:</p>
+                            <a href="{% url 'editar_perfil' %}" class="btn btn-warning">Editar mi perfil</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestión de Propiedades -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProperties" aria-expanded="false" aria-controls="collapseProperties">
+                            Mis Propiedades Publicadas
+                        </button>
+                    </h2>
+                    <div id="collapseProperties" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <h2>Propiedades Publicadas</h2>
+                            {% if propiedades_publicadas %}
+                                <ul class="list-group">
+                                    {% for propiedad in propiedades_publicadas %}
+                                        <li class="list-group-item">
+                                            <strong>{{ propiedad.nombre }}</strong> - {{ propiedad.descripcion }}
+                                            <a href="{% url 'editar_propiedad' propiedad.id %}" class="btn btn-sm btn-secondary">Editar</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No tienes propiedades publicadas.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publicar Nueva Propiedad -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNewProperty" aria-expanded="false" aria-controls="collapseNewProperty">
+                            Publicar Nueva Propiedad
+                        </button>
+                    </h2>
+                    <div id="collapseNewProperty" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <h2>Publicar Propiedad</h2>
+                            <a href="{% url 'publicar_propiedad' %}" class="btn btn-success">Nueva Propiedad</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

@@ -14,6 +14,7 @@ class RegistroUsuarioForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['tipo_usuario'].label = "Rol de Usuario"
 
+
 class BuscadorForm(forms.Form):
     tipo_inmueble = forms.ChoiceField(
         choices=[('', 'Todos')] + [(tipo, tipo) for tipo in ['Casa', 'Departamento', 'Oficina', 'Bodega']],
@@ -26,17 +27,28 @@ class BuscadorForm(forms.Form):
         label="Comuna"
     )
 
+
 class PerfilForm(forms.ModelForm):
     class Meta:
         model = Usuario
         fields = ['nombre', 'email', 'telefono', 'foto_perfil']
+
 
 class VisitaForm(forms.ModelForm):
     class Meta:
         model = Visita
         fields = ['inmueble', 'fecha_visita']
 
+
 class EditarPerfilForm(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = ['nombre', 'email', 'telefono', 'direccion', 'foto_perfil']  
+        fields = ['nombre', 'email', 'telefono', 'direccion', 'foto_perfil']
+
+
+class PropiedadForm(forms.ModelForm):
+    class Meta:
+        model = Inmueble
+        fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_totales', 
+                  'estacionamientos', 'habitaciones', 'banos', 
+                  'direccion', 'comuna', 'tipo_inmueble', 'precio_mensual']

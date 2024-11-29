@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <!-- Bienvenida -->
-        <div class="col-md-8 text-center">
+        <div class="col-md-12 text-center">
             <h1>¡Hola, {{ user.username }}!</h1>
             <p>Estamos encantados de tenerte aquí. A continuación, puedes revisar tu información personal y modificarla si es necesario.</p>
         </div>
@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row">
         <!-- Acordeón -->
-        <div class="col-md-6">
+        <div class="col-md-12 mt-5">
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
@@ -111,27 +111,30 @@
         </div>
 
         <!-- Segundo contenedor: Propiedades favoritas -->
-        <div class="col-md-6">
-            <h2>Mis Propiedades Favoritas</h2>
-            <div class="row">
-                {% for propiedad in propiedades_favoritas %}
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="{{ propiedad.imagen_url }}" class="card-img-top" alt="{{ propiedad.nombre }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ propiedad.nombre }}</h5>
-                                <p class="card-text">{{ propiedad.descripcion }}</p>
-                                <a href="{% url 'ver_detalles' propiedad.id %}" class="btn btn-info">Ver Detalles</a>
-                            </div>
+<div class="container mt-5">
+    <div class="col-md-12 text-center">
+        <h2>Mis Propiedades Favoritas</h2>
+        <div class="row">
+            {% for favorito in propiedades_favoritas %}
+                <div class="col-md-4 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ favorito.inmueble.nombre }}</h5>
+                            <p class="card-text">{{ favorito.inmueble.descripcion }}</p>
+                            <a href="{{ inmueble.image_url }}" class="btn btn-info">Ver Detalles</a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% empty %}
+                <p>No tienes propiedades favoritas.</p>
+            {% endfor %}
         </div>
     </div>
 </div>
 
 {% endblock %}
+
+
 
 
 
