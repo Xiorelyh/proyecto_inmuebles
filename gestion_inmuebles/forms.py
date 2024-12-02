@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Usuario
 from .models import Inmueble
 from .models import Usuario, Visita
-
+from .models import Comuna, Tipo_inmueble
 
 class RegistroUsuarioForm(UserCreationForm):
     class Meta:
@@ -47,8 +47,12 @@ class EditarPerfilForm(forms.ModelForm):
 
 
 class PropiedadForm(forms.ModelForm):
+
+    comuna = forms.ModelChoiceField(queryset=Comuna.objects.all(), empty_label="Seleccione una comuna", required=True)
+    tipo_inmueble = forms.ModelChoiceField(queryset=Tipo_inmueble.objects.all(), empty_label="Seleccione un tipo de inmueble", required=True)
+
     class Meta:
         model = Inmueble
         fields = ['nombre', 'descripcion', 'm2_construidos', 'm2_totales', 
                   'estacionamientos', 'habitaciones', 'banos', 
-                  'direccion', 'comuna', 'tipo_inmueble', 'precio_mensual']
+                  'direccion', 'comuna', 'tipo_inmueble', 'precio_mensual', 'imagen']

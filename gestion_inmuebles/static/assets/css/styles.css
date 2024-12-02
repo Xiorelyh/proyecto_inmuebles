@@ -1,41 +1,29 @@
-.navbar {
-    font-family: Arial, sans-serif;
-    width: 250px;
-    border: 1px solid #ddd;
-    padding: 10px;
+/* Botón azul marino para el acordeón */
+.custom-blue {
+    background-color: #003366; /* Azul marino */
+    color: white; /* Color del texto */
+    border: none; /* Eliminar borde */
+    padding: 10px 20px; /* Espaciado */
+    font-size: 16px; /* Tamaño de la fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Efecto de transición */
 }
 
-.menu-item {
-    margin-bottom: 10px;  /* Espaciado entre elementos */
+.custom-blue:hover {
+    background-color: #002244; /* Azul más oscuro al pasar el ratón */
 }
 
-.menu-button {
-    background-color: #f8f9fa;
-    border: none;
-    width: 100%;
-    padding: 10px;
-    text-align: left;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
+/* Botón verde para el enlace dentro del acordeón */
+.custom-green {
+    background-color: #28a745; /* Verde */
+    color: white; /* Color del texto */
+    border: none; /* Eliminar borde */
+    padding: 10px 20px; /* Espaciado */
+    font-size: 16px; /* Tamaño de la fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Efecto de transición */
 }
 
-.menu-button:hover {
-    background-color: #e2e6ea;
-}
-
-.submenu {
-    display: none;
-    padding: 10px;
-    background-color: #f1f1f1;
-    margin-top: 5px;
-    border-radius: 4px;
-}
-
-.submenu p {
-    margin: 0;
-}
-
-.row {
-    margin-top: 20px;
+.custom-green:hover {
+    background-color: #218838; /* Verde más oscuro al pasar el ratón */
 }

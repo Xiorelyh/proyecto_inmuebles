@@ -40,12 +40,12 @@
 
 <!-- Resultados de la búsqueda -->
 {% if resultados %}
-    <div class="mt-4"> <!-- Eliminado el px-3 para quitar el padding adicional -->
+    <div class="container mt-4"> 
         <h1 style="color: #1a1439; text-align: center;">Resultados de búsqueda</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-3"><!-- Reducido el espacio entre columnas y ajustado las filas -->
+        <div class="row row-cols-1 row-cols-md-4 g-3">
             {% for inmueble in resultados %}
-                <div class="col-md-3 col-sm-12">
-                    <div class="card h-100" style="width: 100%;"> <!-- Aumentado el ancho de la tarjeta -->
+                <div class="col-md-4 col-sm-12">
+                    <div class="card h-100" style="width: 100%;"> 
                         <img src="{{ inmueble.image_url }}" class="card-img-top" alt="Imagen de {{ inmueble.nombre }}">
                         <div class="card-body">
                             <h5 class="card-title" style="text-align: center;">{{ inmueble.nombre }}</h5>
@@ -57,12 +57,11 @@
                             <li class="list-group-item" style="font-weight: bold;">Precio: ${{ inmueble.precio_mensual }}</li>
                         </ul>
                         <div class="card-body d-flex justify-content-between">
-                            <a href="#" class="card-link">Agendar Visita</a>
+                            <a href="{% url 'detalle_inmueble' inmueble.id %}" class="btn btn-primary">Ver Más</a>
                             <a href="{% url 'agregar_favorito' inmueble.id %}" class="card-link">
                                 <i class="fa-regular fa-heart fa-xl"></i>
                             </a>
                         </div>
-
                     </div>
                 </div>
             {% empty %}

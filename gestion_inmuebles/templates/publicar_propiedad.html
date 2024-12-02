@@ -1,20 +1,83 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="container mt-5">
     <h1 class="text-center">Publicar Nueva Propiedad</h1>
     <p class="text-center">Completa los detalles de la nueva propiedad que deseas publicar.</p>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="text-center">
-                    <button type="submit" class="btn btn-success">Publicar Propiedad</button>
-                    <a href="{% url 'perfil_usuario' %}" class="btn btn-secondary">Cancelar</a>
-                </div>
-            </form>
-        </div>
+
+    <!-- Mostrar mensajes de éxito -->
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
     </div>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        
+        <div class="form-group mb-3">
+            <label for="nombre"><strong>Titulo</strong></label>
+            <input type="text" name="nombre" value="{{ form.nombre.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="descripcion"><strong>Descripcion</strong> </label>
+            <input type="text" name="descripcion" value="{{ form.descripcion.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="m2_construidos"><strong>M2 Construidos</strong></label>
+            <input type="number" name="m2_construidos" value="{{ form.m2_construidos.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="m2_totales"><strong>M2 Totales</strong></label>
+            <input type="number" name="m2_totales" value="{{ form.m2_totales.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="estacionamientos"><strong>Estacionamiento</strong></label>
+            <input type="number" name="estacionamientos" value="{{ form.estacionamientos.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="habitaciones"><strong>Habitaciones</strong></label>
+            <input type="number" name="habitaciones" value="{{ form.habitaciones.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="banos"><strong>Baños</strong></label>
+            <input type="number" name="banos" value="{{ form.banos.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="direccion"><strong>Dirección</strong></label>
+            <input type="text" name="direccion" value="{{ form.direccion.value }}" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+            <label for="precio_mensual"><strong>Precio de la Propiedad</strong></label>
+            <input type="text" name="direccion" value="{{ form.precio_mensual.value }}" class="form-control">
+        </div>
+        
+        <!-- Campo Comuna con lista desplegable -->
+        <div class="form-group mb-3">
+            <label for="comuna"><strong>Comuna</strong></label>
+            {{ form.comuna }}
+        </div>
+
+        <!-- Campo Tipo de Inmueble con lista desplegable -->
+        <div class="form-group mb-3">
+            <label for="tipo_inmueble"><strong>Tipo de Inmueble</strong></label>
+            {{ form.tipo_inmueble }}
+        </div>
+
+        <!-- Campo para la imagen -->
+        <div class="form-group mb-3">
+            <label for="imagen"><strong>Imagen de la propiedad</strong></label>
+            {{ form.imagen }}
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success">Publicar Propiedad</button>
+            <a href="{% url 'perfil_usuario' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
 </div>
+
 {% endblock %}

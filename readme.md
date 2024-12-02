@@ -1,6 +1,6 @@
 ![Pantalla_Inicio](Autenticacion_de_Usuario/index.png)
 
-# Proyecto Inmuebles 🏡
+# Proyecto Inmuebles 
 
 Aplicación web desarrollada en **Django** para la gestión de inmuebles y usuarios.
 
@@ -58,6 +58,25 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 ![App Screenshot](Hito3/exportar_inmuebles_por_region.png)
 ![App Screenshot](Hito3/filtro_inmuebles.png)
 ![App Screenshot](Hito3/filtro_inmuebles_comuna.png)
+
+</details>
+
+<details>
+
+<summary>Hito 4</summary>
+
+![App Screenshot](Hito4/1login_usuarios.png)
+![App Screenshot](Hito4/2registro.png)
+![App Screenshot](Hito4/4editar_perfil.png)
+![App Screenshot](Hito4/5perfil_arrendatario.png)
+![App Screenshot](Hito4/6panel_arrendador.png)
+![App Screenshot](Hito4/7busqueda.png)
+![App Screenshot](Hito4/8resultado_busqueda.png)
+![App Screenshot](Hito4/9detalle_inmueble.png)
+![App Screenshot](Hito4/10propiedades_favoritas.png)
+![App Screenshot](Hito4/11paga_tu_arriendo.png)
+![App Screenshot](Hito4/12editar_propiedad.png)
+![App Screenshot](Hito4/13publicar_nueva_propiedad.png)
 
 </details>
 

@@ -138,15 +138,17 @@ def agregar_favorito(request, inmueble_id):
 @login_required
 def publicar_propiedad(request):
     if request.method == 'POST':
-        form = PropiedadForm(request.POST)
+        form = PropiedadForm(request.POST, request.FILES)
         if form.is_valid():
             nueva_propiedad = form.save(commit=False)
             nueva_propiedad.arrendador = request.user  
             nueva_propiedad.save()
+            messages.success(request, 'Propiedad publicada con éxito.')
             return redirect('perfil_usuario')
     else:
         form = PropiedadForm()
     return render(request, 'publicar_propiedad.html', {'form': form})
+
 
 #Editar Propiedd
 @login_required
@@ -160,3 +162,9 @@ def editar_propiedad(request, propiedad_id):
     else:
         form = PropiedadForm(instance=propiedad)
     return render(request, 'editar_propiedad.html', {'form': form, 'propiedad': propiedad})
+
+
+#Vista del Inmueble
+def detalle_inmueble(request, inmueble_id):
+    inmueble = get_object_or_404(Inmueble, id=inmueble_id)
+    return render(request, 'detalle_inmueble.html', {'inmueble': inmueble})

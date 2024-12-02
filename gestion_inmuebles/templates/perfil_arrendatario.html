@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
 
 <div class="container mt-5">
@@ -6,7 +8,7 @@
         <!-- Bienvenida -->
         <div class="col-md-12 text-center">
             <h1>¡Hola, {{ user.username }}!</h1>
-            <p>Estamos encantados de tenerte aquí. A continuación, puedes revisar tu información personal y modificarla si es necesario.</p>
+            <h3>Estamos encantados de tenerte aquí. A continuación, puedes revisar tu información personal y modificarla si es necesario.</h3>
         </div>
     </div>
 </div>
@@ -121,7 +123,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ favorito.inmueble.nombre }}</h5>
                             <p class="card-text">{{ favorito.inmueble.descripcion }}</p>
-                            <a href="{{ inmueble.image_url }}" class="btn btn-info">Ver Detalles</a>
+                            <img src="{{ favorito.inmueble.image_url }}" class="card-img-top" alt="{{ favorito.inmueble.nombre }}">
+                            <a href="{{ favorito.inmueble.image_url }}" class="btn btn-info">Ver Detalles</a>
                         </div>
                     </div>
                 </div>
@@ -133,18 +136,3 @@
 </div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-

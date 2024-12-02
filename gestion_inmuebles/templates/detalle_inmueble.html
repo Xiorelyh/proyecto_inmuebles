@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+    <!-- Título del Inmueble -->
+    <h1 class="text-center mb-4">{{ inmueble.nombre }}</h1>
+    <div class="row">
+        
+        <!-- Columna Derecha: Imagen -->
+        <div class="col-md-8 text-center">
+            <h3 style="text-align: center;">Imagen del Inmueble</h3>
+            {% if inmueble.imagen %}
+                <img src="{{ inmueble.imagen.url }}" alt="{{ inmueble.nombre }}" class="img-fluid rounded border">
+            {% elif inmueble.image_url %}
+                <img src="{{ inmueble.image_url }}" alt="{{ inmueble.nombre }}" class="img-fluid rounded border">
+            {% else %}
+                <p>No hay imágenes disponibles para este inmueble.</p>
+            {% endif %}
+        </div>
+
+        <!-- Columna Izquierda: Información -->
+        <div class="col-md-4">
+            <h3 style=" text-align: center;">Información del Inmueble</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Descripción:</strong> {{ inmueble.descripcion }}</li>
+                <li class="list-group-item"><strong>Metros Construidos:</strong> {{ inmueble.m2_construidos }} m²</li>
+                <li class="list-group-item"><strong>Metros Totales:</strong> {{ inmueble.m2_totales }} m²</li>
+                <li class="list-group-item"><strong>Estacionamientos:</strong> {{ inmueble.estacionamientos }}</li>
+                <li class="list-group-item"><strong>Habitaciones:</strong> {{ inmueble.habitaciones }}</li>
+                <li class="list-group-item"><strong>Baños:</strong> {{ inmueble.banos }}</li>
+                <li class="list-group-item"><strong>Dirección:</strong> {{ inmueble.direccion }}</li>
+                <li class="list-group-item"><strong>Comuna:</strong> {{ inmueble.comuna }}</li>
+                <li class="list-group-item"><strong>Tipo:</strong> {{ inmueble.tipo_inmueble }}</li>
+                <li class="list-group-item"><strong>Precio Mensual:</strong> ${{ inmueble.precio_mensual }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Google Maps -->
+<h3 class="mt-5 text-center">Ubicación (Comuna: {{ inmueble.comuna }})</h3>
+<div class="d-flex justify-content-center">
+    <div id="map" style="height: 700px; width: 80%;">
+        <script>
+            function initMap() {
+                // Obtener la comuna del inmueble
+                var comuna = "{{ inmueble.comuna }}";  // Comuna del inmueble
+
+                // URL para la API de geocodificación
+                var geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + comuna + 'xxxx';
+
+                // Realizar la solicitud a la API de Geocodificación
+                fetch(geocodeUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === "OK") {
+                            var location = data.results[0].geometry.location;
+                            var lat = location.lat;
+                            var lng = location.lng;
+
+                            // Crear el mapa centrado en las coordenadas de la comuna
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 15,
+                                center: { lat: lat, lng: lng }
+                            });
+
+                            // Colocar un marcador en la ubicación de la comuna
+                            new google.maps.Marker({
+                                position: { lat: lat, lng: lng },
+                                map: map,
+                                title: comuna
+                            });
+                        } else {
+                            console.error("No se encontraron coordenadas para la comuna: " + comuna);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener las coordenadas:', error);
+                    });
+            }
+        </script>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

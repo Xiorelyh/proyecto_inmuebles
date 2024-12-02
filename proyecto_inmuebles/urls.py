@@ -36,6 +36,7 @@ urlpatterns = [
     path('agregar_favorito/<int:inmueble_id>/', views.agregar_favorito, name='agregar_favorito'),
     path('propiedades/publicar/', views.publicar_propiedad, name='publicar_propiedad'),
     path('propiedades/editar/<int:propiedad_id>/', views.editar_propiedad, name='editar_propiedad'),
+    path('inmueble/<int:inmueble_id>/', views.detalle_inmueble, name='detalle_inmueble'),
 ] 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

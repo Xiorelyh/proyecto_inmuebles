@@ -8,6 +8,7 @@ class Inmueble(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.TextField()
     image_url = models.URLField(blank=False)
+    imagen = models.ImageField(upload_to='inmuebles/', blank=True, null=True)
     m2_construidos = models.FloatField()
     m2_totales = models.FloatField()
     estacionamientos = models.IntegerField()
